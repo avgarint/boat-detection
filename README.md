@@ -20,4 +20,4 @@ Made with ``Visual Studio Code`` and ``Python``
 
 ## How to use
 ```py
-detect(img_path="Samples\Boat23.PNG", remove_boats=False, export_as_mask=True)```
+detect(img_path="Samples\Boat17.PNG", save_path="Output", remove_boats=False, export_as_mask=True)```
