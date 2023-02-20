@@ -1,5 +1,4 @@
 from PIL import Image
-import utility as utils
 
 # The color applied on detected boats.
 DEBUG_COLOR_DETECTION = (255, 0, 0, 255)
@@ -101,7 +100,7 @@ def get_brightness_image(img):
     copy_as_L = img.convert("L")
 
     histogram = copy_as_L.histogram()
-    pixels = utils.sum(histogram)
+    pixels = sum(histogram)
     brightness = scale = len(histogram)
 
     for i in range(scale):
