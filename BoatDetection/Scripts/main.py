@@ -35,22 +35,22 @@ def detect(img_path, save_path, remove_boats, export_as_mask):
             # Exectued for each pixels.
             pixel = img_luminance.getpixel((x, y))
             
-            if (0 <= pixel <= opti_tolerance) == False:
+            if not (0 <= pixel <= opti_tolerance):
                 # Boat detected
-                if remove_boats == True:
+                if remove_boats:
                     img.putpixel((x, y), dom_color)
 
                     # We allow ourselves to overflow a little on the edges
                     # (10 pixels here) to have a better result.
                     neighbours = get_neighbour_coordinates((x, y), 10)
 
-                    for i in range(len(neighbours)):
-                        img.putpixel((neighbours[i]), dom_color)
+                    for neighbour in neighbours:
+                        img.putpixel(neighbour, dom_color)
 
                 else:
                     img.putpixel((x, y), DEBUG_COLOR_DETECTION)
 
-    if export_as_mask == True:
+    if export_as_mask:
        export_detection_mask(img, save_path + "\Mask.PNG")
 
     # We save the image.
@@ -139,7 +139,7 @@ def get_neighbour_coordinates(coordinates, pixel_distance):
 
 # Usage.
 detect(
-    img_path="Samples\Boat17.PNG",
+    img_path="Samples\Boat16.PNG",
     save_path="Output",
     remove_boats=False,
     export_as_mask=True
