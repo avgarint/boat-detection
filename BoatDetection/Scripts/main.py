@@ -15,7 +15,6 @@ def detect(img_path, save_path, remove_boats, export_as_mask):
     str, str, bool, bool -> None
     Allows to detect the boats on a satellite imagery.
     """
-
     if "\\" in save_path:
         save_path.replace("\\", "")
 
@@ -43,7 +42,7 @@ def detect(img_path, save_path, remove_boats, export_as_mask):
 
                     # We allow ourselves to overflow a little on the edges
                     # (10 pixels here) to have a better result.
-                    neighbours = get_coordinates_neighbour_pixel((x, y), 10)
+                    neighbours = get_neighbour_coordinates((x, y), 10)
 
                     for i in range(len(neighbours)):
                         img.putpixel((neighbours[i]), dom_color)
@@ -63,7 +62,6 @@ def export_detection_mask(img, save_path):
     Build an image of the detection mask from the pixels
     pixels detected as boats.
     """
-
     mask = Image.new("RGB", img.size)
     
     for x in range(img.size[0]):
@@ -80,7 +78,6 @@ def get_dominant_color(img):
     Pil.Image -> tuple(r, g, b)
     Returns the dominant color of the image.
     """
-
     pixels = img.getdata()
 
     # We ingore the alpha channel.
@@ -101,7 +98,6 @@ def get_brightness_image(img):
     Pil.Image -> float/int
     Returns the global brightness of the image.
     """
-
     copy_as_L = img.convert("L")
 
     histogram = copy_as_L.histogram()
@@ -122,7 +118,6 @@ def get_optimal_tolerance(brightness):
     float/int -> int
     Returns the most suitable tolerance for the image.
     """
-
     # The clearer the background (here the sea), the greater the tolerance should be
     # and reverse.
     if brightness * MAX_RGBA_VALUE > 65:
@@ -130,26 +125,22 @@ def get_optimal_tolerance(brightness):
 
     return 80
 
-def get_coordinates_neighbour_pixel(coordinates, deborder_pixel_de):
+def get_neighbour_coordinates(coordinates, pixel_distance):
     """
-    tuple(x, y) -> list[tuple(x, y)]
     Returns the coordinates of the 4 neighboring pixels of a pixel
     (top, bottom, right and left).
-    """
+    """ 
+    top_coord = (coordinates[0], coordinates[1] - pixel_distance)
+    bottom_coord = (coordinates[0], coordinates[1] + pixel_distance)
+    right_coord = (coordinates[0] + pixel_distance, coordinates[1])
+    left_coord = (coordinates[0] - pixel_distance, coordinates[1])
     
-    result = [0 for i in range(4)]
-
-    #                     x                 y
-    result[0] = (coordinates[0], coordinates[1] - deborder_pixel_de) # Top.
-    result[1] = (coordinates[0], coordinates[1] + deborder_pixel_de) # Bottom.
-    result[2] = (coordinates[0] + deborder_pixel_de, coordinates[1]) # Right.
-    result[3] = (coordinates[0] - deborder_pixel_de, coordinates[1]) # Left.
-
-    return result
+    return [top_coord, bottom_coord, right_coord, left_coord]
 
 # Usage.
 detect(
     img_path="Samples\Boat17.PNG",
     save_path="Output",
     remove_boats=False,
-    export_as_mask=True)
+    export_as_mask=True
+)
