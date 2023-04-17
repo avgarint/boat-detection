@@ -126,6 +126,7 @@ def get_optimal_tolerance(brightness):
 
 def get_neighbour_coordinates(coordinates, pixel_distance):
     '''
+    [int], int -> [int]
     Returns the coordinates of the 4 neighboring pixels of a pixel
     (top, bottom, right and left).
     ''' 
