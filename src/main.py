@@ -139,7 +139,7 @@ def get_neighbour_coordinates(coordinates, pixel_distance):
 
 # Usage.
 detect(
-    img_path='Samples\Boat16.PNG',
+    img_path='./Samples/Boat16.PNG',
     save_path='Output',
     remove_boats=False,
     export_as_mask=True
