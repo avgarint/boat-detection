@@ -4,14 +4,14 @@
 ![GitHub code size in bytes](https://img.shields.io/github/languages/code-size/alexandreaero/Boat-Detection)
 ![Lines of code](https://img.shields.io/tokei/lines/github/alexandreaero/Boat-Detection)
 
-### A python project developed during school that aims to detect boat from a satellite imagery using PIL.Image
+### A python project developed during school that aims to detect boats from satellite imagery using PIL.Image
 
 ## Screenshot
 Original picture           |  Output
 :-------------------------:|:-------------------------:
 <img src="https://user-images.githubusercontent.com/66020831/190869765-ae9ba35b-50d4-4985-89a8-ffbee5516fc0.png" width="550" height="350">  |  <img src="https://user-images.githubusercontent.com/66020831/190869769-fa9cea3d-6e69-46a5-abcd-a9b5a5e9342f.png" width="550" height="350">
 
-## Used librairies
+## Used libraries
 - ``Pil Image``: [Website](https://pillow.readthedocs.io/en/stable/installation.html) or [Github repository](https://github.com/python-pillow/Pillow)
 
 ## Usage
