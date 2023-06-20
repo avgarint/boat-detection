@@ -138,9 +138,7 @@ def get_neighbour_coordinates(coordinates, pixel_distance):
     return [top_coord, bottom_coord, right_coord, left_coord]
 
 # Usage.
-detect(
-    img_path='./Samples/Boat16.PNG',
-    save_path='Output',
-    remove_boats=False,
-    export_as_mask=True
-)
+detect(img_path='./Samples/Boat16.PNG',
+       save_path='Output',
+       remove_boats=False,
+       export_as_mask=True)
