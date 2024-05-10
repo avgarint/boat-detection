@@ -1,6 +1,6 @@
 # boat-detection
 
-A python project developed during school that aims to detect boats from satellite imagery using PIL.Image
+A python project developed during school that aims to detect boats from satellite imagery using PIL.Image.
 
 ## Screenshot
 Original picture           |  Output
